@@ -1,3 +1,7 @@
+### history
+
+This repo is a fork from [omwah](https://github.com/omwah/magic-sorting-system), which is a fork from [jhuckaby](https://github.com/jhuckaby/magic-sorting-system).  I have made updates for Minecraft v1.17 and associated updates to the README, as well as some code formatting consistency.  The original idea and core logic remains [jhuckaby's](https://github.com/jhuckaby).
+
 # Overview
 
 ![Main Screenshot](https://pixlcore.com/software/mss/screenshots/v2/main-v2.png)
