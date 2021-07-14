@@ -11,7 +11,7 @@ var Path = require('path');
 var config = require( Path.join( __dirname, 'config.json') );
 
 process.chdir( __dirname );
-var func_dir = Path.resolve( "../data/mss/functions" );
+var func_dir = Path.resolve( "../dist/data/mss/functions" );
 var sort_func_file = Path.join( func_dir, "sort.mcfunction" );
 var group_names = config.groups.map( function(group) { return group.group_name; } );
 

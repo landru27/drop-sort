@@ -76,6 +76,8 @@ Players can still build out custom storage systems fed by this sorting system, u
 
 # Installation
 
+**TODO** : Update these instructions to account for the change in this repo to using a 'dist' directory.
+
 To install the data pack, download the latest ZIP file from the [releases page](https://github.com/jhuckaby/magic-sorting-system/releases), unzip the file, and copy the `magic-sorting-system-#.#.#` folder into your `datapacks` folder for your Minecraft world.  Here are specific instructions for single and multiplayer:
 
 ## Single Player
