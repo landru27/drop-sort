@@ -1,4 +1,4 @@
-### history
+# History
 
 This repo is a fork from [omwah](https://github.com/omwah/magic-sorting-system), which is a fork from [jhuckaby](https://github.com/jhuckaby/magic-sorting-system).  I have made updates for Minecraft v1.17 and associated updates to the README, as well as some code formatting consistency.  The original idea and core logic remains [jhuckaby's](https://github.com/jhuckaby).
 
@@ -6,44 +6,44 @@ This repo is a fork from [omwah](https://github.com/omwah/magic-sorting-system),
 
 ![Main Screenshot](https://pixlcore.com/software/mss/screenshots/v2/main-v2.png)
 
-The **Magic Sorting System** is a free [Data Pack](https://minecraft.gamepedia.com/Data_pack) available for [Minecraft](https://minecraft.net/) v1.13, v1.14, v1.15 and v1.16 (Java edition).  It provides an easy way to craft an automatic, extensible item sorting system, which does not require redstone, nor console commands, nor command blocks.  Items are teleported to matching item frames, where they can be routed via hoppers into chests or furnaces (so it still requires considerable resources and building).  The whole system can be entirely built in survival mode, and supports both single and multiplayer (local or server install).
+The **Magic Sorting System** is a free [Data Pack](https://minecraft.gamepedia.com/Data_pack) available for [Minecraft](https://minecraft.net/) v1.17 (Java Edition).  It provides an easy way to craft an automatic, extensible, and flexible item sorting system, which does not require redstone, nor console commands, nor command blocks.  Items are dropped at a drop-off area determined entirely by a specific configuration of blocks, and teleported to matching item frames, where they can be routed via hoppers into storage and/or further distribution.  The whole system can be entirely built in survival mode, and supports both single and multiplayer.
 
-The sorting system works by providing a special magic drop off area, where you can dump any number of unsorted items (for e.g. when you come back from a mining trip), and they will be automatically sorted into [39 different categories](#groups), each with its own item frame.  Note that you do not need all 39 categories to start out -- you can progressively build your storage system over time, and have it look however you want.  You can also provide a "misc" (catch-all) category, which catches all items which don't have their own group built.
+For example, when returning from a mining trip, exploration, or mob hunting, you can simple dump your collected items on the floor at a convenient spot in your base, and they will be automatically sorted into [a number of different categories](#groups), fed into hoppers, and then stored or routed as you determine.  And, you do not need all of the supported categories to start out -- you can start with just one, and progressively build your storage system over time.  Uncategorized items will return to your inventory, or you can have a 'miscellaneous' category can act as catch-all / fallback.  You can also build it to look however you want, and have different actions for different categories, from simply storing the items in a chest to something as complex as being fed into a sophisticated redstone machine for advanced processing.
 
-Items are teleported directly to their matching [item frames](https://minecraft.gamepedia.com/Item_Frame) for the category.  The idea is that you can place a [hopper](https://minecraft.gamepedia.com/Hopper) directly under each item frame, which then routes the items into a connected chest (or multiple chests), or furnaces for auto-smelting.  Item routing and storing is left up to the player, which can be simple or quite complex.
-
-## Why
+## Motivation
 
 It is already possible to build a complete item sorting and storage system using built-in vanilla Minecraft features.  I've seen some [incredible systems](https://www.youtube.com/watch?v=wsNV9Mo00Gw), and my hat is off to those amazing builders.  However in practice, actually doing it is very difficult and tedious in my experience.  It requires a large amount of hoppers and complex redstone contraptions for filtering.  For example, to filter and store every item in the game, it would take at least 2 hoppers per unique item, or 1,550 hoppers total (3,875 iron ingots).  Doing this in survival mode would take a very long time, and use up an enormous amount of space just for the machinery.
 
-The magic sorting system is designed to make all this much easier to build.  It requires only 1 hopper per category (39 categories total for sorting all items in the game), and handles all the item filtering and routing "magically" (i.e. by automatic item teleportation).  It is server-friendly (lag-free), and it keeps survival gameplay balanced by requiring some expensive resources to start out.
+This sorting system is designed to make all this much easier to build.  It requires only 1 hopper per category (typcially less than 4 dozen categories total for sorting all items in the game), and performs the routing with item teleportation (eliminating the sorting machinery).  It is server-friendly (lag-free), and it keeps survival gameplay balanced by requiring some expensive resources to start out.
 
-Players can still build out custom storage systems using hoppers, chests, furnaces and more.  They can be as simple or complex as they want.  The magic sorting system *only* teleports items to special item frames.  The rest is up to the player.
+Players can still build out custom storage systems fed by this sorting system, using hoppers, chests, furnaces, dispensers, and more.  They can be as simple or complex as they want.  The magic sorting system *only* teleports items to special item frames.  The rest is up to the player.
 
 ## Features at a Glance
 
-- Build and setup everything in pure survival mode
-- Design your storage system to look however you like
-- Progressively add new categories over time
-- Sorts 878 unique items into 39 categories
-- Unsorted items automatically go into a "misc" group
-- Can have multiple sorting systems in same world (128+ blocks apart)
-- Items are sorted to nearest matching item frames
-- Very server-friendly (lag-free design)
-- No redstone, no command blocks, and no console commands required
-- Costs 1 gold block and 1 lapis block for controller
-- Each sort group costs at least 1 item frame, 1 hopper and 1 chest
-- Can extend sort groups into infinite chests with chained hoppers
-- Can dump entire stacks quickly using `Ctrl-Q` keybind (Windows only)
-- Items are sorted the moment they land on the pickup area
-- Many categories have fallback groups (i.e. sandstone falls back to sand, etc.)
-- Automatically distributes items across multiple item frames in same group
-- Support for automatic smelting, and automatic food cooking
-- Create your own custom sort groups by modifying config file
+##### player friendly
+- build and setup everything in pure survival mode
+- progressively add new categories over time
+- design your storage system to look however you like
+- no redstone, no command blocks, and no console commands required
+- supports arbitrary post-sorting processing : automatic smelting, and automatic food cooking
 
-## Upgrading from v1.0
+##### powerful and versitile
+- sorts more than a thousand unique items into just a few dozen categories
+- items are sorted the moment they land on the pickup area
+- items are sorted to nearest matching item frames
+- automatically distributes items across multiple item frames in same group
+- many categories have fallback groups (i.e. sandstone falls back to sand, etc.)
+- support for unsorted items automatically sent into a 'miscellaneous' group
 
-Are you upgrading from Magic Sorting System v1.0?  Version 2.0 has been completely redesigned, and no longer uses a chest (well, it still can if you want one), and there is no need to "activate" a controller by standing on it.  Please see the [Creating the Controller](#creating-the-controller) section for updated instructions.  If you still want to use a drop chest, see the [Advanced](#advanced) section for instructions.
+##### balanced by initial cost and small incremental cost
+- minimum of 1 gold block and 1 lapis block for drop-off area
+- typical setup of 9 gold blocks and 9 lapis block for drop-off area
+- each sort group costs at least 1 item frame, 1 hopper, and 1 chest
+
+##### server friendly
+- lag-free design
+- can have multiple sorting systems in same world (128+ blocks apart)
+- create custom sort groups by modifying config file
 
 ## Table of Contents
 
