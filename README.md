@@ -20,27 +20,28 @@ Players can still build out custom storage systems fed by this sorting system, u
 
 ## Features at a Glance
 
-##### player friendly
+#### player friendly
 - build and setup everything in pure survival mode
 - progressively add new categories over time
 - design your storage system to look however you like
 - no redstone, no command blocks, and no console commands required
-- supports arbitrary post-sorting processing : automatic smelting, and automatic food cooking
+- supports arbitrary post-sorting processing : automatic smelting, automatic food cooking, etc.
 
-##### powerful and versitile
+#### powerful and versitile
 - sorts more than a thousand unique items into just a few dozen categories
-- items are sorted the moment they land on the pickup area
+- items are sorted the moment they land on the dropoff area
 - items are sorted to nearest matching item frames
 - automatically distributes items across multiple item frames in same group
-- many categories have fallback groups (i.e. sandstone falls back to sand, etc.)
+- support for per-category fallback groups (e.g., sandstone falls back to sand, etc.)
 - support for unsorted items automatically sent into a 'miscellaneous' group
 
-##### balanced by initial cost and small incremental cost
+#### balanced
 - minimum of 1 gold block and 1 lapis block for drop-off area
-- typical setup of 9 gold blocks and 9 lapis block for drop-off area
+- typical setup of 9 gold blocks and 9 lapis blocks for drop-off area
 - each sort group costs at least 1 item frame, 1 hopper, and 1 chest
+- anvil and xp level needed to name item in item frame
 
-##### server friendly
+#### server friendly
 - lag-free design
 - can have multiple sorting systems in same world (128+ blocks apart)
 - create custom sort groups by modifying config file
