@@ -66,45 +66,6 @@ Players can still build out custom storage systems fed by this sorting system, u
 	* [Advanced](#advanced)
 		+ [Double Speed Auto-Drop Chest](#double-speed-auto-drop-chest)
 	* [Groups](#groups)
-		+ [Dirt](#dirt)
-			- [Gravel](#gravel)
-		+ [Sand](#sand)
-			- [Sandstone](#sandstone)
-		+ [Wood](#wood)
-			- [Woodwork](#woodwork)
-				* [Office](#office)
-		+ [Stone](#stone)
-			- [Stonework](#stonework)
-		+ [Coal](#coal)
-		+ [Tools](#tools)
-			- [Storage](#storage)
-			- [Armor](#armor)
-			- [Rails](#rails)
-		+ [Plants](#plants)
-			- [Flowers](#flowers)
-		+ [Food](#food)
-			- [Raw](#raw)
-		+ [Mobs](#mobs)
-		+ [Precious](#precious)
-			- [Lapis](#lapis)
-		+ [Magic](#magic)
-			- [Potions](#potions)
-			- [Books](#books)
-		+ [Wool](#wool)
-		+ [Concrete](#concrete)
-		+ [Terracotta](#terracotta)
-		+ [Glass](#glass)
-		+ [Ice](#ice)
-		+ [Ocean](#ocean)
-			- [Coral](#coral)
-			- [Prismarine](#prismarine)
-		+ [Ink](#ink)
-		+ [Nether](#nether)
-		+ [Ores](#ores)
-		+ [Redstone](#redstone)
-		+ [End](#end)
-		+ [Music](#music)
-		+ [Misc](#misc)
 - [FAQ](#faq)
 - [Development](#development)
 	* [Maximum Teleport Distance](#maximum-teleport-distance)
@@ -133,7 +94,7 @@ To install the data pack, download the latest ZIP file from the [releases page](
 
 # Usage
 
-In a nutshell, the magic sorting system is an item teleporter.  It will teleport unsorted items dropped onto a special pickup area, to their respective item frames nearby, and from there they simply fall into hoppers and into your storage chests.  So you need a special magic drop-off block, and one or more item groups containing item frames, hoppers and chests.  The item frames require special items displayed which identify the groups.  See [Groups](#groups) below to learn which groups require which framed items.
+In a nutshell, the magic sorting system is an item teleporter.  It will teleport unsorted items dropped onto a special dropoff area, to their respective item frames nearby, and from there they simply fall into hoppers and into your storage chests.  So you need a special magic drop-off block, and one or more item groups containing item frames, hoppers and chests.  The item frames require special items displayed which identify the groups.  See [Groups](#groups) below to learn which groups require which framed items.
 
 ## Building
 
@@ -183,7 +144,7 @@ For a more advanced auto-controller, see the [Advanced](#advanced) section below
 
 ## Creating an Item Receiver
 
-An "item receiver" is just an [item frame](https://minecraft.gamepedia.com/Item_Frame) that contains a special item which represents one of the [39 groups](#groups).  Then, all items to be sorted within that group will teleport to the item frame.  What happens then?  Well, it's actually entirely up to you!  But the most common thing is to simply place a [hopper](https://minecraft.gamepedia.com/Hopper) underneath the item frame, and route that to a nearby chest.  Example:
+An "item receiver" is just an [item frame](https://minecraft.gamepedia.com/Item_Frame) that contains a special item which represents one of the [sorting categories](#groups).  Then, all items to be sorted within that group will teleport to the item frame.  What happens then?  Well, it's actually entirely up to you!  But the most common thing is to simply place a [hopper](https://minecraft.gamepedia.com/Hopper) underneath the item frame, and route that to a nearby chest.  Example:
 
 ![Single Chest Receiver](https://pixlcore.com/software/mss/screenshots/single-chest.png)
 
@@ -243,7 +204,7 @@ By default, this item frame with the [kelp](https://minecraft.gamepedia.com/Kelp
 
 So in this case, all prismarine related items would teleport to the item frame with the [prismarine](https://minecraft.gamepedia.com/Prismarine) block, all coral items would teleport to the item frame with the [bubble coral](https://minecraft.gamepedia.com/Coral_Block) block, and all the *other* non-prismarine non-coral ocean items would teleport to the item frame with the [Kelp](https://minecraft.gamepedia.com/Kelp) leaf.  The magic sorting system automatically detects which item frames are on display, and sorts accordingly.
 
-See the [Groups](#groups) section below for a list of all 39 groups and to see how the sub-group hierarchy works.
+See the [Groups](#groups) section below for a list of all sorting categories and to see how the sub-group hierarchy works.
 
 ### Misc Catch-All Group
 
@@ -303,7 +264,9 @@ Feel free to bury the entire thing (leave some air for the redstone to breathe),
 
 ## Groups
 
-Here is a list of all 39 groups in the magic sorting system, how some fallback to others, and all the items they contain.
+Here is a list of all sorting groups in the magic sorting system, how some fallback to others, and all the items they contain.
+
+**TODO** : The list of items changes with each Minecraft version; this section should be a general discription, with the focus on the next section, about reviewing and customizing the groupings.
 
 ### Dirt
 
