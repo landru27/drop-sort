@@ -1,7 +1,9 @@
 {
+    "datapack_name": "dropsort",
+    "objective_namespace": "drpsrt",
+    "itemframe_item_name": "dropsortitemcategory",
     "max_teleport_distance": 128,
     "final_fallback": "teleport @s @p",
-    "named": "dropsortitemcategory",
     "effects": [
         "playsound minecraft:entity.illusioner.mirror_move block @a[distance=..5] ~ ~ ~ 1.0 1.0",
         "particle minecraft:enchant ~ ~ ~ 1 1 1 0.1 16"

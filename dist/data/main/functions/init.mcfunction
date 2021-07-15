@@ -3,4 +3,4 @@
 # Called by: #main:init
 
 scoreboard objectives add hc_tick dummy
-scoreboard objectives add dropsort_cooldown dummy
+scoreboard objectives add drpsrt_cooldown dummy

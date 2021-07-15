@@ -11,8 +11,12 @@ var fs = require('fs');
 var Path = require('path');
 var config = require( Path.join( __dirname, 'config.json') );
 
+var datapack_name = config.datapack_name;
+var objective_namespace = config.objective_namespace;
+var itemframe_item_name = config.itemframe_item_name;
+
 process.chdir( __dirname );
-var func_dir = Path.resolve( "../dist/data/dropsort/functions" );
+var func_dir = Path.resolve( "../dist/data/" + datapack_name + "/functions" );
 var sort_func_file = Path.join( func_dir, "sort.mcfunction" );
 var group_names = config.groups.map( function(group) { return group.group_name; } );
 
@@ -27,13 +31,13 @@ var sort_lines = [
 // add optional sound/particle effects on teleport
 if (config.effects) {
     config.effects.forEach( function(effect) {
-        sort_lines.push( "execute at @s unless score #dropsort_cooldown dropsort_cooldown matches 1 run " + effect );
+        sort_lines.push( "execute at @s unless score #" + objective_namespace + "_cooldown " + objective_namespace + "_cooldown matches 1 run " + effect );
     } );
 }
 
 // set cooldown flag
 sort_lines.push(
-    "scoreboard players set #dropsort_cooldown dropsort_cooldown 1",
+    "scoreboard players set #" + objective_namespace + "_cooldown " + objective_namespace + "_cooldown 1",
     ""
 );
 
@@ -64,11 +68,8 @@ config.groups.forEach( function(group) {
 
     if (items && items.length && target) {
         var group_func_file = Path.join( func_dir, "sort_" + group_id + ".mcfunction" );
-        var fallback_action = group.fallback ? ('function dropsort:sort_' + group.fallback) : config.final_fallback;
-        var name_selector = "";
-        if (config.named) {
-            name_selector = ',tag:{display:{Name:\'{"text":"' + config.named + '"}\'}}'
-        }
+        var fallback_action = group.fallback ? ('function ' + datapack_name + ':sort_' + group.fallback) : config.final_fallback;
+        var name_selector = ',tag:{display:{Name:\'{"text":"' + itemframe_item_name + '"}\'}}'
         var entity_match_selector = '@e[type=minecraft:item_frame,nbt={Item:{id:"' + target + '"' + name_selector + '}},distance=0..' + config.max_teleport_distance + ']'
         var entity_dest_selector = '@e[limit=1,sort=random,type=minecraft:item_frame,nbt={Item:{id:"' + target + '"' + name_selector + '}},distance=0..' + config.max_teleport_distance + ']'
 
@@ -88,7 +89,7 @@ config.groups.forEach( function(group) {
             all_item_ids[item_id] = 1;
 
             sort_lines.push(
-                'execute as @s if entity @s[type=item,nbt={Item:{id:"' + item_id + '"}}] run function dropsort:sort_' + group_id
+                'execute as @s if entity @s[type=item,nbt={Item:{id:"' + item_id + '"}}] run function ' + datapack_name + ':sort_' + group_id
             );
             total_items++;
         } );

@@ -2,9 +2,9 @@
 # expects input @s from previous execute / run
 # 41 Groups: dirt, sandstone, wood, plants, flowers, food, raw_food, woodwork, library, stone, stonework, fuel, caves, adventuring, mine, deepmine, redstone, ores, tools, armor, creature_drops, enchanting, brewing, potions, ink, textiles, concrete, terracotta, glass, candles, ocean, ice, coral, prismarine, nether, nether_plants, end, music, spawneggs, incinerate, misc
 
-execute at @s unless score #dropsort_cooldown dropsort_cooldown matches 1 run playsound minecraft:entity.illusioner.mirror_move block @a[distance=..5] ~ ~ ~ 1.0 1.0
-execute at @s unless score #dropsort_cooldown dropsort_cooldown matches 1 run particle minecraft:enchant ~ ~ ~ 1 1 1 0.1 16
-scoreboard players set #dropsort_cooldown dropsort_cooldown 1
+execute at @s unless score #drpsrt_cooldown drpsrt_cooldown matches 1 run playsound minecraft:entity.illusioner.mirror_move block @a[distance=..5] ~ ~ ~ 1.0 1.0
+execute at @s unless score #drpsrt_cooldown drpsrt_cooldown matches 1 run particle minecraft:enchant ~ ~ ~ 1 1 1 0.1 16
+scoreboard players set #drpsrt_cooldown drpsrt_cooldown 1
 
 execute as @s if entity @s[type=item,nbt={Item:{id:"minecraft:coarse_dirt"}}] run function dropsort:sort_dirt
 execute as @s if entity @s[type=item,nbt={Item:{id:"minecraft:dirt"}}] run function dropsort:sort_dirt
