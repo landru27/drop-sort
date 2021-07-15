@@ -12,7 +12,7 @@ var Path = require('path');
 var config = require( Path.join( __dirname, 'config.json') );
 
 process.chdir( __dirname );
-var func_dir = Path.resolve( "../dist/data/mss/functions" );
+var func_dir = Path.resolve( "../dist/data/dropsort/functions" );
 var sort_func_file = Path.join( func_dir, "sort.mcfunction" );
 var group_names = config.groups.map( function(group) { return group.group_name; } );
 
@@ -27,13 +27,13 @@ var sort_lines = [
 // add optional sound/particle effects on teleport
 if (config.effects) {
     config.effects.forEach( function(effect) {
-        sort_lines.push( "execute at @s unless score #mss_cooldown mss_cooldown matches 1 run " + effect );
+        sort_lines.push( "execute at @s unless score #dropsort_cooldown dropsort_cooldown matches 1 run " + effect );
     } );
 }
 
 // set cooldown flag
 sort_lines.push(
-    "scoreboard players set #mss_cooldown mss_cooldown 1",
+    "scoreboard players set #dropsort_cooldown dropsort_cooldown 1",
     ""
 );
 
@@ -64,7 +64,7 @@ config.groups.forEach( function(group) {
 
     if (items && items.length && target) {
         var group_func_file = Path.join( func_dir, "sort_" + group_id + ".mcfunction" );
-        var fallback_action = group.fallback ? ('function mss:sort_' + group.fallback) : config.final_fallback;
+        var fallback_action = group.fallback ? ('function dropsort:sort_' + group.fallback) : config.final_fallback;
         var name_selector = "";
         if (config.named) {
             name_selector = ',tag:{display:{Name:\'{"text":"' + config.named + '"}\'}}'
@@ -88,7 +88,7 @@ config.groups.forEach( function(group) {
             all_item_ids[item_id] = 1;
 
             sort_lines.push(
-                'execute as @s if entity @s[type=item,nbt={Item:{id:"' + item_id + '"}}] run function mss:sort_' + group_id
+                'execute as @s if entity @s[type=item,nbt={Item:{id:"' + item_id + '"}}] run function dropsort:sort_' + group_id
             );
             total_items++;
         } );
