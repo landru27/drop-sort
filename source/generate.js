@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-// Magic Sorting System
+// Drop-Sort
 // (c) 2018 - 2020 Joseph Huckaby, MIT License
+// (c) 2021 Andrew Witt, MIT License
 // Minecraft Data Pack Function Generator
 // Reads item sorting info from config.json and generates all .mcfunction files
 // Usage: node generate.js
@@ -17,8 +18,8 @@ var group_names = config.groups.map( function(group) { return group.group_name; 
 
 // start generating main sort.mcfunction code
 var sort_lines = [
-    "# Magic Sorting System v2.0 -- Sort Single Item",
-    "# Expects input @s from previous execute / run",
+    "# Drop-Sort -- sort single item",
+    "# expects input @s from previous execute / run",
     "# " + group_names.length + " Groups: " + group_names.join(', '),
     ""
 ];
@@ -36,7 +37,7 @@ sort_lines.push(
     ""
 );
 
-console.log("Magic Sorting System -- Code Generator v2.0");
+console.log("Drop-Sort -- code generator");
 console.log("");
 
 var total_items = 0;
