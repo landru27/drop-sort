@@ -62,10 +62,10 @@ Importantly, this handling can start simple and grow with time, and can vary wid
 	* [Creating an Item Collector](#creating-an-item-collector)
 		+ [Multiple Item Frames](#multiple-item-frames)
 		+ [Fallback Groups](#fallback-groups)
-		+ [Misc Catch-All Group](#misc-catch-all-group)
 	* [Advanced](#advanced)
-		+ [Double Speed Auto-Drop Chest](#double-speed-auto-drop-chest)
-	* [Groups](#groups)
+		+ [Dropoff Chest](#dropoff-chest)
+		+ [Double Speed Dropoff Chest](#double-speed-dropoff-chest)
+- [Groups](#groups)
 - [FAQ](#faq)
 - [Development](#development)
 	* [Maximum Teleport Distance](#maximum-teleport-distance)
@@ -82,13 +82,13 @@ To install this datapack, clone or download this repo, and copy the contents of 
 
 In a nutshell, **Drop-Sort** is an item teleporter.  It will teleport unsorted items dropped onto a dropoff area to nearby spots based on what the items are, thus sorting them.  By placing hoppers at those sorting spots, the items are then fed into whatever storage or processing the player decides is good.
 
-## Building
+### Building
 
 To build the sorting system, you will need some gold, lapis, wood, and iron.  You will also need an anvil and spare experience levels for naming items to put into the item frames.  Thus, in survival mode, you will need to play past the beginning stages, to where you can mine deep underground and accumulate enough resources to take care of more basic needs first, such as armor and decent weapons.  By that point, you will likely have enough xp levels as well.
 
 To build the **Drop-Sort** system, you need (1) a dropoff area, and (2) item category collectors.  As already indicated, you can begin with a few and add more over time.  It is recommended that you build a 'miscellaneous' item category collector first, since it will be the catch-all for most of the categories you have not built.
 
-## Creating the Dropoff Area
+### Creating the Dropoff Area
 
 The dropoff area is created by placing down a [gold block](https://minecraft.gamepedia.com/Block_of_Gold), with a [lapis block](https://minecraft.gamepedia.com/Lapis_Lazuli_Block) on top of it.
 
@@ -98,7 +98,7 @@ In addition, you aren't limited to just one dropoff area.  You could have severa
 
 Finally, you do not need to be the one doing the actual dropping; any game mechanic that drops an item and can reliably drop it onto one of these gold-lapis block pairs can serve as a sorting mechanism.  For example, a chest hooked up to a dropper can serve this purpose; See the [Advanced](#advanced) section below.  (This option does require a small amount of redstone, but it has the advantages of chests being easier to use than item dropping is, smoother pacing, and being able to be part of a larger item input system).
 
-## Creating an Item Collector
+### Creating an Item Collector
 
 An "item category collector" or just "item collector" is just an [item frame](https://minecraft.gamepedia.com/Item_Frame) that contains a specific item which has been named a specfic way and situated above a hopper.  This item frame and item represent one of the sorting categories.  The items to be sorted within that group will teleport to that item frame and fall into the hopper.  The hopper then feeds whatever the player deems good, be it as simple as directly into a chest or as complex as a sophisticated redstone mechanism.
 
@@ -118,13 +118,13 @@ And, strictly speaking, the hopper isn't necessary -- it's just the typical arra
 
 **TODO** : add screenshot of redstone mechanism setup
 
-### Multiple Item Frames
+##### Multiple Item Frames
 
 **Drop-Sort** supports multiple item frames for the same category.  Items will be distributed randomly among all nearby matching item frames.  This can be used for quicker handling of high-traffic items (cobblestone, anyone?), distribution between usage and storage (such as storing some coal in addition to using some of it for automated cooking and/or smelting), storing the same items in multiple locations throughout your base for convenience, etc.
 
 Since the distribution is random, you can bias it simply by placing more item frames where you want the distribution to be more heavily weighted.  You can do this with multiple hoppers, or with multiple item frames in a column above a single hopper.  But, in this case, take care to enclose the 'feeding' column, so that teleported items don't fall to the side as they appear.
 
-### Fallback Groups / Subgroups
+##### Fallback Groups / Subgroups
 
 **Drop-Sort** supports subgroups, by allowing any item category to use any other item category as a fallback.  Most item categories typically use a 'miscellaneous' category as their fallback, but for example you could have an 'ocean' category for most aquatic things, and 'coral' and 'prismarine' for those specific kinds of aquatic items.  If they are set up with 'ocean' as their fallback group, they will operate like subgroups, collecting into the 'ocean' collector unless / until the player creates specific collectors for them.  For example, it might be quite a while before there is enough 'prismarine' to have it as a separate group, since it is likely to be late in the game before looting an ocean monument.  Until that time, it makes perfect sense to have it just be a subgroup of 'ocean' for the few prismarine items you might happen across.
 
@@ -134,7 +134,9 @@ This is a great way to start out your storage system, so that items have a defau
 
 Item collection ultimately falls back to the player's inventory; if the 'miscellaneous' item category collector cannot itself be found, items will teleport back to the player.
 
-## Advanced
+### Advanced
+
+##### Dropoff Chest
 
 One of the features of **Drop-Sort** is that no redstone is required.  That is true, however with a simple redstone clock you can build a drop-off chest that automatically sorts all items placed inside it.  It is much easier to dump your entire inventory into a chest versus tossing it out onto the floor.  Also, this has another nice side effect in that it "throttles" item sorting so your hoppers do not overload.  Here is how to build it:
 
@@ -154,7 +156,7 @@ Then, simply place items or entire stacks into the chest and they'll automatical
 
 **Tip:** If you use a [trapped chest](https://minecraft.gamepedia.com/Trapped_Chest) instead of a normal one, the system will not start sorting items until you close the chest lid.  This is a nice safeguard in case you shift-click on the wrong item in your inventory.
 
-### Double Speed Auto-Drop Chest
+##### Double Speed Dropoff Chest
 
 If the auto-drop chest is too slow for your taste, you can build a much faster one with some more materials.  For this you will need two [chests](https://minecraft.gamepedia.com/Chest), two [hoppers](https://minecraft.gamepedia.com/Hopper), two [droppers](https://minecraft.gamepedia.com/Dropper) facing downward, two [comparators](https://minecraft.gamepedia.com/Redstone_Comparator), two [repeaters](https://minecraft.gamepedia.com/Redstone_Repeater) and 10 [redstone dust](https://minecraft.gamepedia.com/Redstone_Dust).  The double-speed redstone circuit is copied verbatim from [this video tutorial](https://www.youtube.com/watch?v=w5tiFl74cSI), so please watch that to see how to orient the blocks.  Here is how it should look:
 
@@ -170,7 +172,7 @@ Just like the single drop chest, you should face both droppers downward, leave o
 
 Feel free to bury the entire thing (leave some air for the redstone to breathe), and just have the drop chest sticking up above ground.
 
-## Groups
+# Groups
 
 **TODO** : the list of items changes with each Minecraft version; this section should be a general discription, with the focus on the next section, about reviewing and customizing the groupings
 
