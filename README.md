@@ -280,7 +280,7 @@ Change this to any number of blocks you want, but please note that the chunks co
 ]
 ```
 
-The above plays one of the sound effects from the [illusioner](https://minecraft.gamepedia.com/Illusioner) mob and shows a lot of colorful particles, but there are many options.  See the Minecraft docs for the [/playsound](https://minecraft.fandom.com/wiki/Commands/playsound) and [/particle](https://minecraft.fandom.com/wiki/Commands/particle) commands, along with the details on the [sound effects](ihttps://minecraft.fandom.com/wiki/Sounds.json) and [particle effects](https://minecraft.fandom.com/wiki/Particles) that are available in Minecraft.
+The above plays one of the sound effects from the [illusioner](https://minecraft.gamepedia.com/Illusioner) mob and shows a lot of colorful particles, but there are many options.  See the Minecraft docs for the [/playsound](https://minecraft.fandom.com/wiki/Commands/playsound) and [/particle](https://minecraft.fandom.com/wiki/Commands/particle) commands, along with the details on the [sound effects](https://minecraft.fandom.com/wiki/Sounds.json) and [particle effects](https://minecraft.fandom.com/wiki/Particles) that are available in Minecraft.
 
 If you don't want any effects at all, just empty the effects array like this:
 
