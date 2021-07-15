@@ -76,7 +76,11 @@ Importantly, this handling can start simple and grow with time, and can vary wid
 
 # Installation
 
-To install this datapack, clone or download this repo, and copy the contents of the `dist` directory to a new directory in your Minecraft world's `datapacks` directory.  See Minecraft documentation for the specifics on managing datapacks.  If you customize the item groupings, simply repeat the process : use the newly-generated contents of the `dist` directory to replace the contents of the datapack's directory under your Minecraft world's `datapacks` directory.
+To install this datapack, clone or download this repo, and copy the contents of the `dist` directory to a new directory such as `drop-sort` in your Minecraft world's `datapacks` directory.  See Minecraft documentation for the specifics on managing datapacks.
+
+If you customize the item groupings, simply repeat the process after compilation : use the newly-generated contents of the `dist` directory to replace the contents of the `drop-sort` directory under your Minecraft world's `datapacks` directory.
+
+Note that datapacks can be installed as a `.zip` file, or as a directory (also called a 'folder' in some instructions).
 
 # Usage
 
@@ -84,9 +88,9 @@ In a nutshell, **Drop-Sort** is an item teleporter.  It will teleport unsorted i
 
 ### Building
 
-To build the sorting system, you will need some gold, lapis, wood, and iron.  You will also need an anvil and spare experience levels for naming items to put into the item frames.  Thus, in survival mode, you will need to play past the beginning stages, to where you can mine deep underground and accumulate enough resources to take care of more basic needs first, such as armor and decent weapons.  By that point, you will likely have enough xp levels as well.
+To build the sorting system, you will need some gold, lapis, wood, leather, and iron.  You will also need an anvil and spare experience levels for naming items to put into the item frames.  Thus, in survival mode, you will need to play past the beginning stages, to where you can mine deep underground and accumulate enough resources to take care of more basic needs first, such as armor and decent weapons.  By that point, you will likely have enough xp levels as well.
 
-To build the **Drop-Sort** system, you need (1) a dropoff area, and (2) item category collectors.  As already indicated, you can begin with a few and add more over time.  It is recommended that you build a 'miscellaneous' item category collector first, since it will be the catch-all for most of the categories you have not built.
+To build the **Drop-Sort** system, you need (1) a dropoff area, and (2) item category collectors.  As already indicated, you can begin with a few and add more over time.  It is recommended that you build a 'miscellaneous' item category collector first, since it will be the catch-all for the categories you have not built.
 
 ### Creating the Dropoff Area
 
@@ -188,10 +192,6 @@ A. If you have multiple Drop-Sort sorting systems in the same world or on the sa
 
 A. This happens when a suitable [item frame](https://minecraft.gamepedia.com/Item_Frame) cannot be found for the items, which can happen for a number of reasons.  First, make sure you have an item frame displaying the *correct item* that matches the target group.  This may not be the exact item in your inventory, but rather a specific item that represents the whole group.  See [Groups](#groups) for a list of these special items -- the item frames must contain those *exact* items!  Second, the item frame must be within 8 chunks (128 blocks) of the drop-off chest, and the chunks all have to be loaded.  Finally, you may not have a [misc category](#misc) setup.  That is, you need an item frame with a [carrot on a stick](https://minecraft.gamepedia.com/Carrot_on_a_Stick), which is a universal catch-all for all unsorted items.  Add this to catch all the items that you don't have specific groups for.
 
-**Q. Why isn't diamond ore sorted into the ores group?**
-
-A. This was actually a deliberate decision when we made the data pack.  We assumed that most of the time, the player would not want diamond ore to be auto-smelted (which is probably where the ores group gets routed -- i.e. into a smelter).  It is more likely that the player would want to break the diamond ore themselves, using a fortune pick.  That being said, if *you* want diamond ore sorted into *your* ores group, you can edit the `config.json` file and rebuild the data pack to your liking!  See [Development](#development) for details.
-
 **Q. Why not simply teleport items to the _nearest_ matching item frame?  Then you wouldn't even need a maximum teleport distance!**
 
 A. That is true, however we actually don't want items teleported to the nearest matching item frame per se.  Consider that a single sort group may have double or more item frames, to load balance the deposited items between multiple hoppers and/or chests.  See [Multiple Item Frames](#multiple-item-frames) for an example.  In this case, to handle large numbers of deposited items at once, we need to randomize between the target item frames, but still maintain compatibility with multiple sorting systems in the same world.  That is where the maximum distance (8 chunks) comes into play.
@@ -208,7 +208,7 @@ This spread arrangement has a much better chance of load balancing between multi
 
 **Drop-Sort** is designed to be extensible.  You can change group sorting rules, add your own custom groups, and even add new items (possibly for supporting mod packs or when new Minecraft versions are released).  This is accomplished by editing a special JSON configuration file.
 
-If you unzip the data pack, and look inside the `source` folder, you will find a `config.json` file.  Open this in your favorite text editor and you will find `groups` array, containing all the sorting groups.  Example snippet:
+In the `source` directory you will find a `config.json` file.  Open this in your favorite text editor and you will find `groups` array, containing all the sorting groups.  Example snippet:
 
 ```js
 "groups": {
@@ -269,7 +269,7 @@ Change this to any number of blocks you want, but please note that the chunks co
 
 ### Teleport Effects
 
-Don't like the particle effect or sound effect when items are sorted?  You can customize or disable those by editing the `effects` array:
+**Drop-Sort** supports generating particle effects and/or sound effects when items are sorted.  You can customize those by editing the `effects` array:
 
 ```js
 "effects": [
@@ -278,25 +278,23 @@ Don't like the particle effect or sound effect when items are sorted?  You can c
 ]
 ```
 
-By default we show some colorful particles and play one of the sound effects from the [illusioner](https://minecraft.gamepedia.com/Illusioner) mob, but you can change this.  For example, if you don't want any effects at all, just empty the effects array like this:
+The above plays one of the sound effects from the [illusioner](https://minecraft.gamepedia.com/Illusioner) mob and shows a lot of colorful particles, but there are many options.  See the Minecraft docs for the [/playsound](https://minecraft.fandom.com/wiki/Commands/playsound) and [/particle](https://minecraft.fandom.com/wiki/Commands/particle) commands, along with the details on the [sound effects](ihttps://minecraft.fandom.com/wiki/Sounds.json) and [particle effects](https://minecraft.fandom.com/wiki/Particles) that are available in Minecraft.
+
+If you don't want any effects at all, just empty the effects array like this:
 
 ```js
 "effects": []
 ```
 
-Or, you can choose your own [particles](https://minecraft.gamepedia.com/Particles#Types_of_particles) and/or [sounds](https://minecraft.gamepedia.com/Sounds.json#Sound_events) from the game, and replace the commands with your custom versions.
-
 ### Compiling
 
-When you are done making your changes to the file, save and [validate the syntax](https://jsonlint.com/) (JSON can be picky).  Then you will have to "compile" the config file into actual data pack function code.  This is done by running a special `generate.js` script that also lives in the `source` folder.  You will need [Node.js](https://nodejs.org/) installed on your machine to run this script.  Once installed, open a command prompt, change into the `source` directory and type this:
+When you are done making your changes to the file, save and [validate the syntax](https://jsonlint.com/) (JSON can be picky).  Then you will have to "compile" the config file into actual data pack function code.  This is done by running a special `generate.js` script that also lives in the `source` directory.  You will need [Node.js](https://nodejs.org/) installed on your machine to run this script.  Once installed, open a command prompt, change into the `source` directory and type this:
 
 ```
 node generate.js
 ```
 
-This will regenerate all the data pack function code (i.e. all the `.mcfunction` files) using your own `config.json` file as the source.  When the script is complete, the new data pack should be all ready to be installed to your local folder or server.
-
-Note that data packs can be installed as a ZIP file, or as a folder.
+This will regenerate all the data pack function code (i.e. all the `.mcfunction` files) using your own `config.json` file as the source.  When the script is complete, the new data pack should be all ready to be installed to your local directory or server.
 
 # References
 
