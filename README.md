@@ -2,49 +2,57 @@
 
 This repo is a fork from [omwah/magic-sorting-system](https://github.com/omwah/magic-sorting-system), which is a fork from [jhuckaby/magic-sorting-system](https://github.com/jhuckaby/magic-sorting-system).  Chiefly, I have reorganized the code and the item groupings to my liking.  The orginal idea and core logic remains [jhuckaby's](https://github.com/jhuckaby).
 
+
 # Overview
 
-**Drop-Sort** is a free [datapack](https://minecraft.gamepedia.com/Data_pack) available for [Minecraft](https://minecraft.net/) v1.17 (Java Edition).  It provides an easy way to craft an automatic, extensible, and flexible item sorting system, which does not require redstone, nor console commands, nor command blocks.  Items are dropped at a drop-off area determined entirely by a specific in-game configuration of blocks, and teleported to sorting spots nearby determined by item categorization, where they can be routed via hoppers into storage and/or further distribution.  The whole system can be entirely built in survival mode, and supports both single player and multiplayer.
+**Drop-Sort** is a free [datapack](https://minecraft.gamepedia.com/Data_pack) available for [Minecraft](https://minecraft.net/) v1.17 (Java Edition).  It provides an easy way to craft an automatic, extensible, and flexible item sorting system, which does not require redstone, nor console commands, nor command blocks.  Items are dropped at a drop-off area determined entirely by a specific in-game configuration of blocks, and teleported to sorting spots nearby identified by item frames representing item categories, where they can be routed via hoppers into storage and/or further distribution.  The whole system can be entirely built in survival mode, and supports both single player and multiplayer.
 
-For example, when returning from a mining trip, exploration, or mob hunting, you can simply dump your collected items on the floor at a convenient spot in your base, and they will be automatically sorted into a number of different categories, fed into hoppers, and then stored or routed as you determine.  And, you do not need all of the supported categories to start out; you can start with just a few, and progressively build your storage system over time, because of fallback / catch-all behavior.  Uncategorized items will return to your inventory.  You can also build it to look however you want, and have different actions for different categories, from simply storing the items in a chest to something as complex as being fed into a sophisticated redstone machine for advanced processing.
+For example, when returning from a mining trip, exploration, or mob hunting, you can simply dump your collected items on the floor at a convenient spot in your base, and they will be automatically sorted into a number of different categories, fed into hoppers, and then stored or routed as you determine.  And, you do not need all of the supported categories to start out; you can start with just a few, and progressively build your storage system over time, because of fallback / catch-all behavior.  You can also build it to look however you want, and have different actions for different categories, from simply storing the items in a chest to something as complex as being fed into a sophisticated redstone machine for advanced processing.
 
-## Motivation
 
-It is already possible to build a complete item sorting and storage system using built-in vanilla Minecraft features.  There are many [incredible systems](https://www.youtube.com/watch?v=wsNV9Mo00Gw), and hats off to those amazing builders.  However in practice, actually doing it is very difficult and tedious, requires a large amount of hoppers, and involves complex redstone contraptions for filtering.  For example, at a minimum of 2 hoppers per item, the 1,100+ unique items in the game would take some 11,000 iron ingots -- more than 170 full stacks / 3 full double-chests!  Then there is the redstone, quartz, wood, and so forth.  Doing this in survival mode would take a very long time, and use up an enormous amount of space just for the sorting machinery.
+# Motivation
 
-**Drop-Sort** is designed to make all this much easier to build.  It requires only 1 hopper per category (typcially less than 4 dozen categories total for sorting all items in the game), and performs the routing with item teleportation (eliminating the sorting machinery).  It is server-friendly (lag-free), and it keeps survival gameplay balanced by requiring some expensive resources to start out.  At the same time, players are free to build larger systems for storing or processign items.  Importantly, this handling can start simple and grow with time, and can vary widely by category so that each category can be given the appropriate amount of handling.  Some categories might always just go into a single chest; other categories might warrant several double chests; still others might be automatically smelted; the player can even combine this system with a traditional redstone sorting system, e.g., for finer-grained sorting of specific, important items.  In the true spirit of Minecraft, it's entirely up to the player's needs and imagination!
+It is already possible to build a complete item sorting and storage system using built-in vanilla Minecraft features.  There are many [incredible systems](https://www.youtube.com/results?search_query=minecraft+automatic+item+sorter), and hats off to those amazing builders.  However, in practice, actually doing it is very difficult and tedious, requires a large amount of iron for hoppers and other resources, involves complex redstone contraptions for filtering, and requires 'primer' items which cannot be used for anything except the sorting mechanism.
 
-Players can still build out custom storage systems fed by this sorting system, using hoppers, chests, furnaces, dispensers, and more.  They can be as simple or complex as they want.  The **Drop-Sort** system *only* teleports items to special item frames.  The rest is up to the player.
+**Drop-Sort** is designed to make all this much easier to build.  It requires minimal resources to expand the system in order to differentiate more items (typcially less than 4 dozen categories total for sorting *all* items in the game), and performs the routing with item teleportation (eliminating the sorting machinery).  It is server-friendly (lag-free), and it keeps survival gameplay balanced by requiring some expensive resources and experience levels to start out.  And, **Drop-Sort** does *not* require having any minimum number of each item being sorted -- you can use up every last one of your diamonds and **Drop-Sort** will continue to sort new diamonds into the proper place.
 
-## Features at a Glance
+At the same time, players are free to build larger systems for storing or processign items if the would like.  Players can still build out custom storage systems fed by this sorting system, using hoppers, chests, furnaces, dispensers, and more.  They can be as simple or complex as they want.  The **Drop-Sort** system *only* teleports items to special item frames; any sort of item handling can take place from there.
 
-#### player friendly
+Importantly, this handling can start simple and grow with time, and can vary widely by category so that each category can be given the appropriate amount of handling.  Some categories might always just go into a single chest; other categories might warrant several double chests; still others might be automatically smelted; the player can even combine this system with a traditional redstone sorting system, e.g., for finer-grained sorting of specific, important items.  In the true spirit of Minecraft, it's entirely up to the player's needs and imagination!
+
+
+# Features at a Glance
+
+### player friendly
 - build and setup everything in pure survival mode
 - progressively add new categories over time
 - design your storage system to look however you like
 - no redstone, no command blocks, and no console commands required
 - supports arbitrary post-sorting processing : automatic smelting, automatic food cooking, etc.
 
-#### powerful and versitile
+### powerful and versitile
 - sorts more than a thousand unique items into just a few dozen categories
 - items are sorted the moment they land on the dropoff area
 - items are sorted to nearest matching item frames
 - automatically distributes items across multiple item frames in same group
-- support for per-category fallback groups (e.g., sandstone falls back to sand, etc.)
-- support for unsorted items automatically sent into a 'miscellaneous' group
+- support for per-category fallback groups (e.g., 'coral' falls back to 'ocean', etc.)
+- support for global fallback with a 'miscellaneous' group
 
-#### balanced
+### balanced
 - minimum of 1 gold block and 1 lapis block for drop-off area
 - typical setup of 9 gold blocks and 9 lapis blocks for drop-off area
-- each sort group costs at least 1 item frame, 1 hopper, and 1 chest
-- anvil and xp level needed to name item in item frame
+- this grows as needed and as resources are available
+- each sort group has a minimal but non-trival resource cost
+- each sort group costs 1 xp level to name item in item frame
+- anvil needed for naming items
 
-#### server friendly
+### server friendly
 - lag-free design
 - can have multiple sorting systems in same world (128+ blocks apart)
-- create custom sort groups by modifying config file
+- customize sort groups by modifying config file
 
-## Table of Contents
+
+# Table of Contents
 
 <!-- toc -->
 - [Installation](#installation)
