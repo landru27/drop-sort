@@ -16,7 +16,7 @@ It is already possible to build a complete item sorting and storage system using
 
 **Drop-Sort** is designed to make all this much easier to build.  It requires minimal resources to expand the system in order to differentiate more items (typcially less than 4 dozen categories total for sorting *all* items in the game), and performs the routing with item teleportation (eliminating the sorting machinery).  It is server-friendly (lag-free), and it keeps survival gameplay balanced by requiring some expensive resources and experience levels to start out.  And, **Drop-Sort** does *not* require having any minimum number of each item being sorted -- you can use up every last one of your diamonds and **Drop-Sort** will continue to sort new diamonds into the proper place.
 
-At the same time, players are free to build larger systems for storing or processign items if the would like.  Players can still build out custom storage systems fed by this sorting system, using hoppers, chests, furnaces, dispensers, and more.  They can be as simple or complex as they want.  The **Drop-Sort** system *only* teleports items to special item frames; any sort of item handling can take place from there.
+At the same time, players are free to build larger systems for storing or processign items if they would like.  Players can still build out custom storage systems fed by this sorting system, using hoppers, chests, furnaces, dispensers, and more.  They can be as simple or complex as they want.  The **Drop-Sort** system *only* teleports items to special item frames; any kind of item handling can take place from there.
 
 Importantly, this handling can start simple and grow with time, and can vary widely by category so that each category can be given the appropriate amount of handling.  Some categories might always just go into a single chest; other categories might warrant several double chests; still others might be automatically smelted; the player can even combine this system with a traditional redstone sorting system, e.g., for finer-grained sorting of specific, important items.  In the true spirit of Minecraft, it's entirely up to the player's needs and imagination!
 
@@ -61,7 +61,7 @@ Importantly, this handling can start simple and grow with time, and can vary wid
 	* [Creating the Dropoff Area](#creating-the-dropoff-area)
 	* [Creating an Item Collector](#creating-an-item-collector)
 		+ [Multiple Item Frames](#multiple-item-frames)
-		+ [Fallback Groups](#fallback-groups)
+		+ [Fallback Groups And Subgroups](#fallback-groups-and-subgroups)
 	* [Advanced](#advanced)
 		+ [Dropoff Chest](#dropoff-chest)
 		+ [Double Speed Dropoff Chest](#double-speed-dropoff-chest)
@@ -124,7 +124,7 @@ And, strictly speaking, the hopper isn't necessary -- it's just the typical arra
 
 Since the distribution is random, you can bias it simply by placing more item frames where you want the distribution to be more heavily weighted.  You can do this with multiple hoppers, or with multiple item frames in a column above a single hopper.  But, in this case, take care to enclose the 'feeding' column, so that teleported items don't fall to the side as they appear.
 
-##### Fallback Groups / Subgroups
+##### Fallback Groups and Subgroups
 
 **Drop-Sort** supports subgroups, by allowing any item category to use any other item category as a fallback.  Most item categories typically use a 'miscellaneous' category as their fallback, but for example you could have an 'ocean' category for most aquatic things, and 'coral' and 'prismarine' for those specific kinds of aquatic items.  If they are set up with 'ocean' as their fallback group, they will operate like subgroups, collecting into the 'ocean' collector unless / until the player creates specific collectors for them.  For example, it might be quite a while before there is enough 'prismarine' to have it as a separate group, since it is likely to be late in the game before looting an ocean monument.  Until that time, it makes perfect sense to have it just be a subgroup of 'ocean' for the few prismarine items you might happen across.
 
@@ -174,7 +174,7 @@ Feel free to bury the entire thing (leave some air for the redstone to breathe),
 
 # Groups
 
-**TODO** : the list of items changes with each Minecraft version; this section should be a general discription, with the focus on the next section, about reviewing and customizing the groupings
+**TODO** : the list of items changes with each Minecraft version; this section should be a general description, with the focus on the section below about reviewing and customizing the categories
 
 **TODO** : auto-generate a summary of the categories while generating the datapack from source
 
@@ -257,7 +257,7 @@ The idea is that all the item IDs listed in the `items` array will be sorted int
 
 In the example JSON snippet above, you can see three separate groups described.  The cascading works as follows.  The `gravel` group would sort gravel into an item frame containing a `minecraft:gravel` block.  However, if that item frame couldn't be found, the group falls back to the `dirt` group.  The `dirt` group itself contains 7 items, which would all be sorted to an item frame containing a `minecraft:dirt` block.  However, if *that* item frame couldn't be found, those items would fall back to the `misc` group.  The `misc` group by default catches all unsorted items, and routes to an item frame containing a `minecraft:carrot_on_a_stick`.
 
-## Maximum Teleport Distance
+### Maximum Teleport Distance
 
 By default, the maximum item teleportation is 128 blocks.  This feature allows multiple sorting systems to coexist in the same world, without items teleporting to the wrong item frames.  However, if you want to change this, it is set in the `config.json` file outside of the `groups` array:
 
@@ -267,7 +267,7 @@ By default, the maximum item teleportation is 128 blocks.  This feature allows m
 
 Change this to any number of blocks you want, but please note that the chunks containing the item frames have to be loaded for the teleport to work.  For long distance teleportation it is recommended you build your storage system inside the spawn chunks, so it stays loaded.
 
-## Teleport Effects
+### Teleport Effects
 
 Don't like the particle effect or sound effect when items are sorted?  You can customize or disable those by editing the `effects` array:
 
@@ -286,7 +286,7 @@ By default we show some colorful particles and play one of the sound effects fro
 
 Or, you can choose your own [particles](https://minecraft.gamepedia.com/Particles#Types_of_particles) and/or [sounds](https://minecraft.gamepedia.com/Sounds.json#Sound_events) from the game, and replace the commands with your custom versions.
 
-## Compiling
+### Compiling
 
 When you are done making your changes to the file, save and [validate the syntax](https://jsonlint.com/) (JSON can be picky).  Then you will have to "compile" the config file into actual data pack function code.  This is done by running a special `generate.js` script that also lives in the `source` folder.  You will need [Node.js](https://nodejs.org/) installed on your machine to run this script.  Once installed, open a command prompt, change into the `source` directory and type this:
 
