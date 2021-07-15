@@ -108,6 +108,8 @@ An "item category collector" or just "item collector" is just an [item frame](ht
 
 And, strictly speaking, the hopper isn't necessary -- it's just the typical arrangement.  The category item frame could hover over a water stream which carries the items away, or over some lava as a way of disposing of all items in that category, or simply fall onto the ground in order to make them freely available to other players, villagers, etc.
 
+Look in this repo in `source/config.json` to see what item categories there are, and what items are used to identify each item category.  (**TODO** : provide a better way to look this up)  Use an anvil to name the item `dropsortitemcategory` before putting it in its itemframe.  Of course, if you customize some or all of the categorization, use the items you specify for your categories.
+
 **TODO** : add screenshot of single chest setup
 
 **TODO** : add screenshot of multiple chest setup
