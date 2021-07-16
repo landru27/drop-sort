@@ -31,13 +31,13 @@ var sort_lines = [
 // add optional sound/particle effects on teleport
 if (config.effects) {
     config.effects.forEach( function(effect) {
-        sort_lines.push( "execute at @s unless score #" + objective_namespace + "_cooldown " + objective_namespace + "_cooldown matches 1 run " + effect );
+        sort_lines.push( "execute at @s unless score #" + objective_namespace + "_global " + objective_namespace + "_cooldown matches 1 run " + effect );
     } );
 }
 
 // set cooldown flag
 sort_lines.push(
-    "scoreboard players set #" + objective_namespace + "_cooldown " + objective_namespace + "_cooldown 1",
+    "scoreboard players set #" + objective_namespace + "_global " + objective_namespace + "_cooldown 1",
     ""
 );
 
