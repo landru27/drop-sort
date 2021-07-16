@@ -1,4 +1,4 @@
-# Runs every second via tick counter (main:tick)
+# Runs every second via tick counter (main:loop)
 # Locate any loose items ready to sort
 
 # Primary sort routine
