@@ -108,7 +108,7 @@ An "item category collector" or just "item collector" is just an [item frame](ht
 
 And, strictly speaking, the hopper isn't necessary -- it's just the typical arrangement.  The category item frame could hover over a water stream which carries the items away, or over some lava as a way of disposing of all items in that category, or simply fall onto the ground in order to make them freely available to other players, villagers, etc.
 
-Look in this repo in `source/config.json` to see what item categories there are, and what items are used to identify each item category.  (**TODO** : provide a better way to look this up)  Use an anvil to name the item `dropsortitemcategory` before putting it in its itemframe.  Of course, if you customize some or all of the categorization, use the items you specify for your categories.
+Look in this repo in `src/config.json` to see what item categories there are, and what items are used to identify each item category.  (**TODO** : provide a better way to look this up)  Use an anvil to name the item `dropsortitemcategory` before putting it in its itemframe.  Of course, if you customize some or all of the categorization, use the items you specify for your categories.
 
 **TODO** : add screenshot of single chest setup
 
@@ -210,7 +210,7 @@ This spread arrangement has a much better chance of load balancing between multi
 
 **Drop-Sort** is designed to be extensible.  You can change group sorting rules, add your own custom groups, and even add new items (possibly for supporting mod packs or when new Minecraft versions are released).  This is accomplished by editing a special JSON configuration file.
 
-In the `source` directory you will find a `config.json` file.  Open this in your favorite text editor and you will find `groups` array, containing all the sorting groups.  Example snippet:
+In the `src` directory you will find a `config.json` file.  Open this in your favorite text editor and you will find `groups` array, containing all the sorting groups.  Example snippet:
 
 ```js
 "groups": {
@@ -290,7 +290,7 @@ If you don't want any effects at all, just empty the effects array like this:
 
 ### Compiling
 
-When you are done making your changes to the file, save and [validate the syntax](https://jsonlint.com/) (JSON can be picky).  Then you will have to "compile" the config file into actual data pack function code.  This is done by running a special `generate.js` script that also lives in the `source` directory.  You will need [Node.js](https://nodejs.org/) installed on your machine to run this script.  Once installed, open a command prompt, change into the `source` directory and type this:
+When you are done making your changes to the file, save and [validate the syntax](https://jsonlint.com/) (JSON can be picky).  Then you will have to "compile" the config file into actual data pack function code.  This is done by running a special `generate.js` script that also lives in the `src` directory.  You will need [Node.js](https://nodejs.org/) installed on your machine to run this script.  Once installed, open a command prompt, change into the `src` directory and type this:
 
 ```
 node generate.js
